@@ -60,6 +60,11 @@ def get_graph(request):
         first_shortest = nx.shortest_path(graph, get_node, 'root_cor')
         shortest = second_shortest_path(graph, get_node, first_shortest[-2])        # for alternative path to same ICOR
         # shortest = second_shortest_path(graph, get_node, 'root_cor')                 # for second shortest path
+        print(shortest[1])
+        if 'root_cor' in shortest[0]:
+            shortest[0].remove('root_cor')
+        if 'root_cor' in shortest[1]:
+            shortest[1].remove('root_cor')
         neighbours = [i for i in graph.neighbors(get_node)]
         print("First Shortest Path:", shortest[0])
         if shortest[0] != shortest[1] and len(shortest[0]) != len(shortest[1]):
@@ -101,8 +106,8 @@ def second_shortest_path(graph, source, target):
     for u, v in zip(shortest_path[:-1], shortest_path[1:]):
         graph[u][v]['weight'] = 1
     
-
-    if 'root_cor' in second_shortest_path:
+    print(second_shortest_path[:-1])
+    if 'root_cor' in second_shortest_path[:-1]:
          second_shortest_path = []
 
     return shortest_path, second_shortest_path
@@ -134,7 +139,7 @@ def convert_data(neighbours, first_shortest_path, second_shortest_path, get_node
     for edge in edges_list:
         if edge not in unique_edges:
             unique_edges.append(edge)
-
+    print(unique_edges)
     shortestPath = first_shortest_path
     secondShortestPath = second_shortest_path
     return nodes, unique_edges, shortestPath, secondShortestPath
