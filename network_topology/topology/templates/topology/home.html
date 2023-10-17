@@ -1,0 +1,15 @@
+{% include 'navbar.html' %} 
+{% block content %} 
+<div class="container" style="padding: 10px; padding-top: 20px;">
+    
+    {% include 'topology/search.html'%} 
+    <div  class="row" style="padding: 8px; padding-top: 20px;">
+        <div class="col-3"id="all_nodes" style="background-color: white; border-radius: 10px; height: 600px; overflow-y: auto;padding: 10px; max-height: 700px;">
+            {% include 'topology/table.html'%} 
+        </div>
+        <div class="col-8" id="files" style="background-color: white; padding: 20px; border-radius: 10px; margin-left: 30px; overflow-y: auto">
+            {% include 'topology/graph.html'%} 
+        </div>
+    </div>  
+</div>
+{% endblock %}

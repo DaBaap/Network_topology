@@ -1,0 +1,19 @@
+{% load static %}
+<div id="all_nodes" class="row"style="padding-top: 20px;">
+    <div class="col-9">
+        <div class="form-group">
+            <input type="text" class="form-control" id="search" list="suggestions" placeholder="Search">
+            <datalist id="suggestions">
+            </datalist>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="searchModeToggle">
+            <label class="form-check-label" for="searchModeToggle">Search by IP Address</label>
+        </div>
+    </div>
+</div> 
+<script src="{% static 'js/search.js' %}"></script>
+
+

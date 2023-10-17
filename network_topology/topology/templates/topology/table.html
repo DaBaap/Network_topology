@@ -1,0 +1,58 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}">
+</head>
+<div class="row">
+    <div class="col-6">
+        <button type="button" class="btn btn-sm custom-button" style="text-align: left;"  name="all_nodes_button" id="all_nodes_button"> 
+            <span style="font-size: 12px;font-family: Verdana, sans-serif;">
+                <h4>All Nodes</h4>
+            </span> 
+        </button> 
+    </div>
+    <div class="col-1"><h3>/</h3></div>
+    <div class="col-5">
+            <input type="hidden" name="get_node_button" id="get_node_button" value="isolated">
+            <button type="submit" class="btn btn-sm custom-button" style="text-align: left;"  name="iso_nodes_button" id="iso_nodes_button"> 
+                <span style="font-size: 12px;font-family: Verdana, sans-serif;">
+                    <h6>Isolated Nodes</h6>
+                </span> 
+            </button> 
+    </div>
+</div>
+<hr>
+<div id="all_nodes_div" style="display: block;">
+    {% for i in unique_nodes %}
+        <div class="row"style="padding: 10px;">
+            <div class="col-1">
+                <i class="fas fa-chevron-circle-right"></i>
+            </div>
+            <div class="col-11">
+                <button type="submit" class="btn btn-sm custom-button loadGraph" style="text-align: left;"  name="node_button" value="{{i}}"> 
+                    <span style="font-size: 12px;font-family: Verdana, sans-serif;">
+                        {{i}}
+                    </span> 
+                </button> 
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div id="iso_nodes_div" style="display: none;">
+
+    {% for i in isolated_nodes %}
+        <div class="row"style="padding: 10px;">
+            <div class="col-1">
+                <i class="fas fa-chevron-circle-right"></i>
+            </div>
+            <div class="col-11">
+                <button type="submit" class="btn btn-sm custom-button loadGraph" style="text-align: left;"  name="node_button" value="{{i}}"> 
+                    <span style="font-size: 12px;font-family: Verdana, sans-serif;">
+                        {{i}}
+                    </span> 
+                </button> 
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+<script src="{% static 'js/table.js' %}"></script>

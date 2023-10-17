@@ -1,0 +1,16 @@
+{% load static %}
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="row" id="node_name">
+    <h3> Graph </h3>    
+</div>
+<hr>
+<div class="row" style="height: 600px;">    
+    <div id="mynetwork">
+    </div>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+<script src="{% static 'js/graph.js' %}"></script>
