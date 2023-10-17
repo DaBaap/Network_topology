@@ -68,7 +68,7 @@ def get_graph(request):
         else:
             print('No Alternative Path')
             second_shortest = []
-        nodes, edgesData, shortestPath, secondShortestPath = convert_data([], shortest[0], second_shortest, get_node)
+        nodes, edgesData, shortestPath, secondShortestPath = convert_data(neighbours, shortest[0], second_shortest, get_node)
 
         context = {
             'nodes': nodes,
@@ -118,13 +118,23 @@ def convert_data(neighbours, first_shortest_path, second_shortest_path, get_node
     ]
     def create_edges(path, neighbour=False):
         if neighbour:
-            return [{"from": path[i], "to": path[-1], "arrows": "to, from"} for i in range(len(path)-1)]
+            return [{"from": path[-1], "to": path[i], "arrows": "to, from"} for i in range(len(path)-1)]
         else:
             return [{"from": path[i], "to": path[i+1], "arrows": "to, from"} for i in range(len(path)-1)]
 
     neighbours.append(get_node)
-    edgesData = create_edges(first_shortest_path) + create_edges(second_shortest_path) + create_edges(neighbours, True) 
+    edges_list = []
+
+    edges_list += create_edges(first_shortest_path)
+    edges_list += create_edges(second_shortest_path)
+
+    edges_list += create_edges(neighbours, True)
+
+    unique_edges = []
+    for edge in edges_list:
+        if edge not in unique_edges:
+            unique_edges.append(edge)
+
     shortestPath = first_shortest_path
     secondShortestPath = second_shortest_path
-    
-    return nodes, edgesData, shortestPath, secondShortestPath
+    return nodes, unique_edges, shortestPath, secondShortestPath
