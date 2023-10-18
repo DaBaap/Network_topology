@@ -11,10 +11,10 @@ The Web Application uses networkx for network graph creation and visjs for visua
 Install the python packages from req.txt file. 
 
 If there is a csv file to be loaded in database then run (the project already contains the sqlite database that was provided):
-    python manage.py import_csv <filename.csv>
+    ```python manage.py import_csv <filename.csv>```
 
 Run the server:
-    python manage.py runserver
+    ```python manage.py runserver```
 
 ### Path through table
 In the web page you can see list of nodes/isolated nodes, search bar and a section for network graph. 
